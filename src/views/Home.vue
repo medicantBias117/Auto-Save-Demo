@@ -8,7 +8,7 @@
             <p>
                 This is a simple demo for auto-saving. Your entered data is stored in local storage. As you move from
                 this journey (without completing the form), you can expect the form data to be retained. Read more about
-                this here.
+                this <a href="https://rkakodker.medium.com/designing-a-user-friendly-autosave-functionality-part-2-89f9915551ee">here</a> .
                 <br /><br />
                 To jump into another journey,
                 <RouterLink to="/randomjourney" class="underline underline-offset-1 bg-yellow-200">
