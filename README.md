@@ -1,29 +1,12 @@
-# Auto-save
+# Auto-save Forms Demo
+A simple Vue3 demo to demonstrate auto-saving with in-journey prompts to complete the sign-up. <br />
+Demo: [Open to view](http://autosave.rkakodker-dev.cloud/) <br />
+Article: [Medium](https://rkakodker.medium.com/designing-a-user-friendly-autosave-functionality-part-2-89f9915551ee) 
 
-This template should help get you started developing with Vue 3 in Vite.
-
-## Recommended IDE Setup
-
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
+## Modify this code
+1. Download this repo to your local server. <br />
+2. Make sure you have NodeJS installed.
+3. Install dependancies ('npm i') in the root folder
+4. Run dev instance (npm run dev)
+5. Open localhost as shown in the terminal (ideally, http://localhost:5173/)
+6. Edit & Profit!
