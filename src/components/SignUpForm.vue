@@ -84,7 +84,9 @@
                 ></InputContainer>
                 <div class="mt-8 flex flex-row justify-between">
                     <button class="btn btn-ghost" @click="prevPage">Back</button>
-                    <button class="btn" @click="submitForm">Submit!</button>
+                    <button class="btn" @click="submitForm" :disabled="!formErrorCheck">
+                    {{ !formErrorCheck ? 'Please check the errors' : 'Submit' }}
+                    </button>
                 </div>
             </div>
         </div>
@@ -180,6 +182,18 @@ const updateValue = async (field) => {
             errorDisplay[field] = 'Please enter a valid value OR leave blank.'
         }
     } else if (field == 'password') {
+        console.log(formData[field])
+        if (formData[field] != '' && formData[field].length >= 5 && formData[field].length <= 10) {
+            formStore.data[field] = formData[field]
+            isError.value = false
+            errorDisplay[field] = ''
+        } else if (formData[field].length < 5 || formData[field].length > 10) {
+            isError.value = true
+            errorDisplay[field] = 'The password can be between 5 to 10 chars long'
+        } else {
+            isError.value = true
+            errorDisplay[field] = 'Please enter a password'
+        }
     }
 }
 
@@ -200,25 +214,28 @@ const prevPage = () => {
     }
 }
 
-const submitForm = () => {
-    //send the data as an API call to the server.
-    //Clear the local data.
-    alert('Your form has been successfuly submitted')
-    formStore.$deleteEverything
-    formData = {
-        email: '',
-        phoneNumber: '',
-        location: '',
-        monkeyName: '',
-        password: '',
-    }
+const submitForm = async () => {
+    await updateValue('password')
+    if (checkIfThereIsAnyError()) {
+        //send the data as an API call to the server.
+        //Clear the local data.
+        alert('Your form has been successfuly submitted')
+        formStore.$deleteEverything
+        formData = {
+            email: '',
+            phoneNumber: '',
+            location: '',
+            monkeyName: '',
+            password: '',
+        }
 
-    formStore.data = formData
-    currentStep.value = 1
-    formStore.signupComplete = true
-    // added to close the modal automatically
-    if (path == '/randomjourney') {
-        document.getElementById('my-modal').checked = false
+        formStore.data = formData
+        currentStep.value = 1
+        formStore.signupComplete = true
+        // added to close the modal automatically
+        if (path == '/randomjourney') {
+            document.getElementById('my-modal').checked = false
+        }
     }
 }
 
